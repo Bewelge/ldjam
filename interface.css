@@ -13,6 +13,39 @@ body {
 canvas {
 	/* max-height: 100vh; */
 }
+#mainScreen {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+#startScreen {
+	position: absolute;
+	background-color: black;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
+	z-index: 1;
+	color: white;
+	font-size: 24px;
+	font-family: monospace;
+}
+#startScreen button {
+	background-color: black;
+	border: 2px solid white;
+	border-radius: 4px;
+	color: white;
+}
+#mainScreen canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
 /* Main Shop Container */
 .shop-container {
 	position: absolute;

@@ -2,6 +2,7 @@
 // Import required classes (assuming they're in separate files)
 // If not, ensure these classes are defined before this code
 
+import { StaticReadUsage } from "three"
 import { Colors, getColor } from "./Colors.js"
 import { Inventory } from "./Inventory.js"
 import { renderOreGain } from "./OreGainSys.js"
@@ -98,7 +99,14 @@ class Game {
 		this.canvas.style.backgroundColor = "#87CEEB" // Sky blue background
 
 		// Add canvas to DOM
-		document.body.appendChild(this.canvas)
+		document.getElementById("mainScreen")!.appendChild(this.canvas)
+		document
+			.getElementById("startScreen")
+			?.querySelector("button")
+			?.addEventListener("click", () => {
+				let el = document.getElementById("startScreen")!
+				el.parentElement?.removeChild(el)
+			})
 
 		// Get rendering context
 		const context = this.canvas.getContext("2d")

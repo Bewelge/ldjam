@@ -68,6 +68,7 @@ class Game {
     // inventory: Item[]
     // Configuration
     constructor() {
+        var _a, _b;
         this.tilesToKill = [];
         // Create canvas element
         this.canvas = document.createElement("canvas");
@@ -77,7 +78,13 @@ class Game {
         this.canvas.style.margin = "0 auto";
         this.canvas.style.backgroundColor = "#87CEEB"; // Sky blue background
         // Add canvas to DOM
-        document.body.appendChild(this.canvas);
+        document.getElementById("mainScreen").appendChild(this.canvas);
+        (_b = (_a = document
+            .getElementById("startScreen")) === null || _a === void 0 ? void 0 : _a.querySelector("button")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", () => {
+            var _a;
+            let el = document.getElementById("startScreen");
+            (_a = el.parentElement) === null || _a === void 0 ? void 0 : _a.removeChild(el);
+        });
         // Get rendering context
         const context = this.canvas.getContext("2d");
         if (!context) {
