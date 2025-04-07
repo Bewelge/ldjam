@@ -226,7 +226,7 @@ export class Player {
         let shoulderOffset = PLAYER_SIZE * 0;
         let shoulderOffsetW = PLAYER_SIZE * 0.6;
         let legOffsetT = -PLAYER_SIZE * 0.2;
-        let legOffsetB = -PLAYER_SIZE * 0.75;
+        let legOffsetB = -PLAYER_SIZE * 0.6;
         let legOffsetTW = PLAYER_SIZE * 0.2;
         let legOffsetBW = PLAYER_SIZE * 0.5;
         let center = new Vec2(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);

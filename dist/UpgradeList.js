@@ -1,6 +1,6 @@
 import { Upgrade, UpgradeType } from "./Upgrades.js";
 export const UpgradeList = {
-    SPEED: new Upgrade("SPEED", UpgradeType.SPEED, "Basic Speed", "Increases player movement speed.", 25, 8, 2, 2, 5, []),
+    SPEED: new Upgrade("SPEED", UpgradeType.SPEED, "Basic Speed", "Increases player movement speed.", 25, 8, 2, 1.3, 5, []),
     FLY_SPEED: new Upgrade("FLY_SPEED", UpgradeType.FLY_SPEED, "Flight Speed", "Increases flight speed.", 25, 10, 1, 2.5, 5, []),
     MINING_DAMAGE: new Upgrade("MINING_DAMAGE", UpgradeType.MINING_DAMAGE, "Basic Mining", "Increases mining strength.", 25, 1.5, 10, 1.5, 20, []),
     MINING_SPEED: new Upgrade("MINING_SPEED", UpgradeType.MINING_SPEED, "Advanced Mining", "Increases mining speed.", 400, 15, 5, 1, 3, [{ upgradeId: "MINING_DAMAGE", requiredLevel: 3 }]),

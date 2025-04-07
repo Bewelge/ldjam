@@ -73,7 +73,6 @@ class Textures {
                     img.src = val.url;
                     img.onload = () => {
                         this.loaded++;
-                        console.log(key);
                         this.textures[key].img = img;
                         if (this.loaded >= totalTextures) {
                             resolve(this.textures);
@@ -87,7 +86,7 @@ class Textures {
                     this.loaded++;
                     if (this.loaded >= totalTextures) {
                         resolve(this.textures);
-                        console.log("TEture", this.textures);
+                        console.log("Texture", this.textures);
                     }
                     img.onerror = error => {
                         reject(`Failed to load texture: ${val.url}`);
@@ -221,7 +220,6 @@ export function generateTexture(typeKey) {
     }
     if (TileTypes[typeKey].type == "ore") {
         let oreColor = Colors.themes.Classic[typeKey];
-        console.log(ct.fillStyle);
         let step = 16;
         let nsOff = rndP.copy().addAngle(0, 250);
         let bitSize = 16;

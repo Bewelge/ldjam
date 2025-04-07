@@ -29,12 +29,12 @@ export const soundList = {
     DRILL: {
         url: "audio/drill.mp3",
         loop: false,
-        behavior: SoundBehavior.OVERLAP,
+        behavior: SoundBehavior.IGNORE_WHILE_PLAYING,
     },
     BREAK: {
         url: "audio/break.mp3",
         loop: false,
-        behavior: SoundBehavior.OVERLAP,
+        behavior: SoundBehavior.IGNORE_WHILE_PLAYING,
     },
     // Sound effects - play once when triggered
     // CLICK: {

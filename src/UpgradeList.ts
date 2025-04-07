@@ -9,7 +9,7 @@ export const UpgradeList = {
 		25,
 		8,
 		2,
-		2,
+		1.3,
 		5,
 		[],
 	),

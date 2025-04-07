@@ -311,12 +311,14 @@ export class Tile {
 		if (this.typeInfo.resource && this.typeInfo.resourceAmount) {
 			let amnt = this.typeInfo.resourceAmount()
 			if (amnt > 0) {
-				inventory.addResource(this.typeInfo.resource, amnt)
-				addOreGain(
-					player.position.copy().addAngle(player.direction, PLAYER_SIZE / 2),
-					this.typeInfo.resource,
-					amnt,
-				)
+				let add = inventory.addResource(this.typeInfo.resource, amnt)
+				if (add) {
+					addOreGain(
+						player.position.copy().addAngle(player.direction, PLAYER_SIZE / 2),
+						this.typeInfo.resource,
+						add,
+					)
+				}
 			}
 			console.log("added " + amnt + "x ", this.typeInfo)
 		}
@@ -343,10 +345,10 @@ export class Tile {
 		if (this.type === "EMPTY") {
 			ctx.drawImage(
 				getTexture("EMPTY", this.indexP.copy().multiply(10))!,
-				x,
-				y,
-				tileSize,
-				tileSize,
+				Math.floor(x) + 0.5,
+				Math.floor(y) + 0.5,
+				tileSize + 1,
+				tileSize + 1,
 			)
 			return
 		}
@@ -354,7 +356,13 @@ export class Tile {
 		let texture = this.getTexture(this.type, new Vec2(x, y))
 
 		if (texture) {
-			ctx.drawImage(texture, x, y, tileSize, tileSize)
+			ctx.drawImage(
+				texture,
+				Math.floor(x) + 0.5,
+				Math.floor(y) + 0.5,
+				tileSize + 1,
+				tileSize + 1,
+			)
 		} else {
 			ctx.fillStyle = color || this.typeInfo.color
 			ctx.fillRect(x, y, tileSize, tileSize)

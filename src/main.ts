@@ -53,8 +53,8 @@ enum GameState {
 	END_DAY,
 	END_GAME,
 }
-export const CANVAS_WIDTH = 800
-export const CANVAS_HEIGHT = 1000
+export const CANVAS_WIDTH = 948 //800
+export const CANVAS_HEIGHT = 533 //1000
 export const GRID_HEIGHT = 1000 // Much deeper than wide
 export const GRID_WIDTH = 250
 export const TILE_SIZE = 48
@@ -130,7 +130,7 @@ class Game {
 		this.lastTime = 0
 		this.dayCount = 0
 		this.dayTime = 0
-		this.dayLength = 180000 // 3 minutes for a full day
+		this.dayLength = 60000 // 3 minutes for a full day
 	}
 
 	// Game setup
@@ -203,7 +203,7 @@ class Game {
 
 		// Generate terrain
 		window.addEventListener("keydown", ev => {
-			console.log(ev.key)
+			// console.log(ev.key)
 			if (ev.key == "o") {
 				upgradeShop.openShop()
 			} else if (ev.key == "p") {
@@ -344,13 +344,10 @@ class Game {
 
 		// Draw background (sky gradient based on time of day)
 		this.drawBackground()
-
-		// Render grid
-		this.grid.render(this.ctx, this.player.position)
 		let shopPos = new Vec2((GRID_WIDTH * TILE_SIZE) / 2 - 6 * TILE_SIZE, -1)
 		if (player.position.distanceTo(shopPos) < 1000) {
 			let shopP = transformWorldToRenderP(shopPos)
-			console.log(player.position.distanceTo(shopPos))
+			// console.log(player.position.distanceTo(shopPos))
 			if (player.position.distanceTo(shopPos) < 64) {
 				if (!sellHasOpened && !sellShop.isOpen()) {
 					sellHasOpened = true
@@ -372,12 +369,12 @@ class Game {
 		let oraclePos = new Vec2((GRID_WIDTH * TILE_SIZE) / 2 + 5 * TILE_SIZE, -1)
 		if (player.position.distanceTo(oraclePos) < 1000) {
 			let shopP = transformWorldToRenderP(oraclePos)
-			console.log(player.position.distanceTo(oraclePos))
+			// console.log(player.position.distanceTo(oraclePos))
 			if (player.position.distanceTo(oraclePos) < 64) {
 				if (!oracleHasOpened && !upgradeShop.isOpen()) {
 					oracleHasOpened = true
 					upgradeShop.openShop()
-					console.log("Opening jsop")
+					// console.log("Opening jsop")
 				}
 			} else {
 				oracleHasOpened = false
@@ -391,6 +388,8 @@ class Game {
 				shopSize,
 			)
 		}
+		// Render grid
+		this.grid.render(this.ctx, this.player.position)
 
 		this.player.render(this.ctx)
 

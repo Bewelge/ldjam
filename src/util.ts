@@ -1,6 +1,5 @@
 import { CANVAS_HEIGHT, CANVAS_WIDTH, TILE_SIZE } from "./main.js"
 import { noise } from "./noise.js"
-import * as THREE from "three"
 
 export var scale = 1
 export let width = 2000 * scale
@@ -171,15 +170,15 @@ export class Vec2 {
 	static origin() {
 		return new Vec2(0, 0)
 	}
-	moveTo(ct: Path2D | CanvasRenderingContext2D | THREE.Shape) {
+	moveTo(ct: Path2D | CanvasRenderingContext2D) {
 		ct.moveTo(this.x, this.y)
 		return this
 	}
-	lineTo(ct: Path2D | CanvasRenderingContext2D | THREE.Shape) {
+	lineTo(ct: Path2D | CanvasRenderingContext2D) {
 		ct.lineTo(this.x, this.y)
 		return this
 	}
-	arc(ct: Path2D | CanvasRenderingContext2D | THREE.Shape, rad: number) {
+	arc(ct: Path2D | CanvasRenderingContext2D, rad: number) {
 		ct.arc(this.x, this.y, rad, 0, PI2, false)
 		return this
 	}
@@ -214,7 +213,7 @@ export class Vec2 {
 		ct.beginPath()
 		return this
 	}
-	close(ct: Path2D | CanvasRenderingContext2D | THREE.Shape) {
+	close(ct: Path2D | CanvasRenderingContext2D) {
 		ct.closePath()
 		return this
 	}
@@ -240,7 +239,6 @@ export function rnd() {
 }
 export const seedRndGen = (date: Date) => {
 	let hash = cyrb128(date.toISOString())
-	console.log("Hash", hash)
 	rndGen = sfc32(...hash)
 }
 function cyrb128(str: string): [number, number, number, number] {
@@ -319,13 +317,7 @@ export function peg(val: number, min = 0, max = 1) {
 export function ns(p: Vec2, off: Vec2, res: number) {
 	return noise.simplex2((p.x % 1000) * res + off.x, (p.y % 1000) * res + off.y)
 }
-export function ns3(p: THREE.Vector3, off: Vec2, res: number) {
-	return noise.simplex3(
-		p.x * res + off.x,
-		p.y * res + off.y,
-		p.z * res + off.y + off.x,
-	)
-}
+
 export class Line {
 	pts: Vec2[]
 	distances: number[]
@@ -385,16 +377,6 @@ export class Line {
 			.fill(0)
 			.map((_, i) => this.getPosAt(i / num))
 	}
-}
-
-export function centerGeometry(geom: THREE.BufferGeometry) {
-	geom.computeBoundingBox()
-	const bbox = geom.boundingBox
-	const center = new THREE.Vector3()
-	bbox!.getCenter(center)
-	// This will shift your geometry so that its center is at (0, 0, 0)
-	geom.translate(-center.x, -center.y, -center.z)
-	return center
 }
 
 export function transformWorldToRenderP(p: Vec2) {
