@@ -1,0 +1,6 @@
+/lib/js/
+/lib/js/*.js
+lib/js
+lib/js/*
+lib/*
+

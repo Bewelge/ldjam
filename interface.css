@@ -1,0 +1,301 @@
+:root {
+	--blue: rgba(50, 80, 110, 1);
+}
+html,
+body {
+	height: 100%;
+	width: 100%;
+}
+body {
+	display: flex;
+	align-items: center;
+}
+canvas {
+	/* max-height: 100vh; */
+}
+/* Main Shop Container */
+.shop-container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	max-width: calc(800px - 2rem);
+	width: 100%;
+	max-height: 600px;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.9);
+	border-radius: 8px;
+	box-sizing: border-box;
+	color: white;
+	font-family: Arial, sans-serif;
+	z-index: 1000;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+/* Shop Header */
+.shop-header {
+	padding: 15px;
+	border-bottom: 1px solid gold;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.shop-title {
+	margin: 0;
+	color: gold;
+}
+
+.resources-display {
+	color: gold;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.close-button {
+	background-color: red;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+/* Tabs */
+.tabs-container {
+	display: flex;
+	border-bottom: 1px solid #333;
+}
+
+.tab-button {
+	padding: 10px 20px;
+	background-color: #555;
+	color: white;
+	border: none;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: bold;
+	flex: 1;
+}
+
+.tab-button-active {
+	background-color: goldenrod;
+	color: black;
+}
+
+.tab-button:not(:last-child) {
+	border-right: 1px solid #333;
+}
+
+/* Market Info */
+.market-info {
+	padding: 10px;
+	background-color: #222;
+	border-bottom: 1px solid #333;
+	font-style: italic;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+	flex: 1;
+	height: 100%;
+	position: relative;
+}
+
+/* Content Containers */
+.content-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	background-color: #333;
+	padding: 10px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Sell Tab Specific */
+.resource-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+	margin-bottom: 20px;
+	flex: 1;
+}
+
+.resource-item {
+	padding: 10px;
+	background-color: rgba(50, 50, 50, 0.8);
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+.resource-item-selected {
+	background-color: rgba(100, 100, 255, 0.3);
+}
+
+.resource-color-box {
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+	border-radius: 4px;
+}
+
+.resource-info {
+	flex: 1;
+}
+
+.resource-name {
+	font-weight: bold;
+	margin-bottom: 4px;
+}
+
+.resource-value-container {
+	text-align: right;
+}
+
+.resource-value,
+.resource-total {
+	color: gold;
+}
+
+.resource-value {
+	margin-bottom: 4px;
+}
+
+/* Button Container */
+.buttons-container {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	background-color: rgba(0, 0, 0, 0.3);
+	border-radius: 4px;
+}
+
+.sell-button {
+	padding: 10px 20px;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.sell-selected {
+	background-color: green;
+}
+
+.sell-all {
+	background-color: darkgreen;
+	margin-left: auto;
+}
+
+/* Empty State */
+.empty-message {
+	text-align: center;
+	padding: 20px;
+	color: #999;
+	font-style: italic;
+}
+
+/* Upgrades Tab Specific */
+.upgrades-list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.upgrade-item {
+	padding: 15px;
+	background-color: rgba(50, 50, 50, 0.8);
+	border-radius: 4px;
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+.upgrade-item-selected {
+	background-color: rgba(100, 100, 255, 0.3);
+}
+
+.upgrade-header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.upgrade-name {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.upgrade-level {
+	color: lightblue;
+}
+
+.upgrade-description {
+	color: lightblue;
+	margin-bottom: 10px;
+}
+
+.upgrade-effect {
+	color: lightgreen;
+	margin-bottom: 10px;
+}
+
+.upgrade-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.upgrade-cost {
+	color: gold;
+	font-weight: bold;
+}
+
+.upgrade-cost-unaffordable {
+	color: red;
+}
+
+.purchase-button {
+	padding: 8px 16px;
+	background-color: green;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-weight: bold;
+}
+@supports (scrollbar-color: auto) {
+	.styledScroll {
+		scrollbar-width: thin;
+		scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+	}
+}
+
+/* Otherwise, use `::-webkit-scrollbar-*` pseudo-elements */
+@supports selector(::-webkit-scrollbar) {
+	.styledScroll::-webkit-scrollbar {
+		background: aquamarine;
+	}
+	.styledScroll::-webkit-scrollbar-thumb {
+		background: cornflowerblue;
+	}
+	.styledScroll::-webkit-scrollbar-track {
+		background: transparent;
+	}
+}
